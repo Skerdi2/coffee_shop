@@ -1,0 +1,14 @@
+package com.example.coffee_shop.controller;
+
+import com.example.coffee_shop.services.implementation.CategoryServImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/category")
+public class CategoryController {
+
+    @Autowired
+    private CategoryServImpl categoryServ;
+}
