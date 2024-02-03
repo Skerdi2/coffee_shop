@@ -17,17 +17,17 @@ public class ProductConverter {
         return productDTO;
     }
 
-    public static Product toEntity(ProductDTO productDTO){
+    public static Product toEntity(ProductDTO productDTO,Category category){
         Product product = new Product();
         product.setDescription(productDTO.getDescription());
         product.setName(productDTO.getDescription());
         product.setPrice(productDTO.getPrice());
+        product.setCategory(category);
         return product;
     }
 
-    public static Category toEntityForUpdate(CategoryDTO categoryDTO, Category category){
-        category.setName(categoryDTO.getName());
-        category.setDescription(categoryDTO.getDescription());
-        return category;
+    public static Product toEntityForUpdate(Product product, Category category){
+        product.setCategory(category);
+        return product;
     }
 }

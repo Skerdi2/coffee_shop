@@ -1,14 +1,32 @@
 package com.example.coffee_shop.controller;
 
+import com.example.coffee_shop.dto.DashboardDTO;
+import com.example.coffee_shop.services.DashboardService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import com.example.coffee_shop.services.implementation.UserServImpl;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/dashboard")
 public class DashboardController {
 
     @Autowired
-    private UserServImpl userService;
+    private DashboardService dashboardService;
+
+
+    @PostMapping("/save")
+    public void save(@RequestBody DashboardDTO dashboardDTO) {
+        dashboardService.save(dashboardDTO);
+    }
+
+    @PutMapping("/update")
+    public void update(@RequestBody DashboardDTO dashboardDTO) {
+        dashboardService.update(dashboardDTO);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<DashboardDTO> findById(@PathVariable Integer id) {
+        return ResponseEntity.ok(dashboardService.findById(id));
+    }
+
 }
